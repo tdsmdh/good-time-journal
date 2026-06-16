@@ -1,8 +1,8 @@
 # 📓 Good Time Journal (Designing Your Life)
 <p align="center">
-  <img src="Good TIme Journal - Desktop.png" width="600" alt="Desktop View">
+  <img src="Good Time Journal - Desktop.png" width="600" alt="Desktop View">
   <br><br>
-  <img src="Good TIme Journal - Mobile.png" width="300" alt="Mobile View">
+  <img src="Good Time Journal - Mobile.png" width="300" alt="Mobile View">
 </p>
 
 A privacy-first, open-source web application designed to help you track your daily activities, energy levels, and engagement. Inspired by the foundational "Good Time Journal" exercise from the #1 New York Times Bestseller *Designing Your Life* by Bill Burnett and Dave Evans.
