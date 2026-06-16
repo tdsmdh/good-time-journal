@@ -4,6 +4,8 @@ A privacy-first, open-source web application designed to help you track your dai
 
 This tool replaces the traditional pen-and-paper worksheet with a tactile, responsive, cross-platform web app that works flawlessly on your laptop and your phone.
 
+Vibe coded using Google Gemini.
+
 ## ✨ Features
 
 * **Zero-Friction Logging:** Quickly log activities, employers/contexts, and AEIOU reflections.
