@@ -20,6 +20,7 @@
 </head>
 <body class="h-screen w-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300 selection:bg-yellow-200 dark:selection:bg-yellow-500/30">
 
+  <!-- Header -->
   <header class="flex-none bg-white dark:bg-gray-900 px-6 md:px-10 py-5 flex flex-col sm:flex-row sm:items-center justify-between z-20 border-b-2 border-gray-900 dark:border-gray-700 shadow-sm gap-4 transition-colors">
     <div class="flex flex-col">
       <div class="text-[10px] font-bold tracking-[0.2em] text-gray-500 dark:text-gray-400 uppercase mb-1">Open Source Tracker</div>
@@ -34,15 +35,18 @@
     </div>
     
     <div class="flex items-center gap-3">
+      <!-- Navigation -->
       <div class="flex border-2 border-gray-900 dark:border-gray-600 bg-white dark:bg-gray-800">
-        <button id="nav-input" class="px-3 md:px-4 py-2 text-xs md:text-sm font-extrabold uppercase tracking-widest bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900" onclick="switchView('input')">Log</button>
-        <button id="nav-ledger" class="px-3 md:px-4 py-2 text-xs md:text-sm font-extrabold uppercase tracking-widest text-gray-900 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" onclick="switchView('ledger')">Ledger</button>
+        <button id="nav-input" class="px-3 md:px-4 py-2 text-xs md:text-sm font-extrabold uppercase tracking-widest bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 transition-colors" onclick="switchView('input')">Log</button>
+        <button id="nav-ledger" class="px-3 md:px-4 py-2 text-xs md:text-sm font-extrabold uppercase tracking-widest text-gray-900 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" onclick="switchView('ledger')">Ledger</button>
       </div>
 
+      <!-- Settings / Sync Button -->
       <button onclick="toggleSettings()" class="p-2 border-2 border-gray-900 dark:border-gray-600 text-gray-900 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="Data Sync & Settings">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
       </button>
 
+      <!-- Theme Toggle -->
       <button onclick="toggleDarkMode()" class="p-2 border-2 border-gray-900 dark:border-gray-600 text-gray-900 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
         <svg id="icon-moon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
         <svg id="icon-sun" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -50,6 +54,7 @@
     </div>
   </header>
 
+  <!-- Settings & Sync Modal -->
   <div id="settingsModal" class="hidden fixed inset-0 bg-gray-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
     <div class="bg-white dark:bg-gray-900 border-2 border-gray-900 dark:border-gray-600 max-w-lg w-full p-6 md:p-8 shadow-[8px_8px_0px_#111827] dark:shadow-[8px_8px_0px_#000000] relative">
       <button onclick="toggleSettings()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-900 dark:hover:text-white">
@@ -58,6 +63,7 @@
       
       <h2 class="text-xl font-extrabold uppercase tracking-widest mb-6">Data & Sync Settings</h2>
       
+      <!-- Option 1: File Transfer -->
       <div class="mb-8 p-4 border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
         <h3 class="text-sm font-bold uppercase tracking-wider mb-2 text-cyan-600 dark:text-cyan-400">1. Offline Transfer</h3>
         <p class="text-xs text-gray-600 dark:text-gray-400 mb-4">Export your data as a file to send between your laptop and phone safely without a cloud.</p>
@@ -70,6 +76,7 @@
         </div>
       </div>
 
+      <!-- Option 2: Live Cloud Sync -->
       <div class="p-4 border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
         <h3 class="text-sm font-bold uppercase tracking-wider mb-2 text-pink-600 dark:text-pink-400">2. Live Google Sheets Sync</h3>
         <p class="text-xs text-gray-600 dark:text-gray-400 mb-4">For power users: Paste your own Google Apps Script Web URL below to sync your data instantly across all devices.</p>
@@ -82,6 +89,7 @@
 
   <main class="flex-1 overflow-hidden bg-gray-50 dark:bg-gray-800 relative">
     
+    <!-- VIEW 1: Input Form -->
     <section id="view-input" class="w-full h-full overflow-y-auto custom-scrollbar p-6 pb-12">
       <div class="max-w-2xl mx-auto bg-white dark:bg-gray-900 p-6 md:p-10 border-2 border-gray-900 dark:border-gray-600 shadow-[8px_8px_0px_#111827] dark:shadow-[8px_8px_0px_#000000]">
         <div id="statusBanner" class="hidden text-sm p-4 mb-6 text-center font-bold border-2 transition-all"></div>
@@ -89,6 +97,7 @@
         <form id="journalForm" class="space-y-8">
           <div class="space-y-6">
             
+            <!-- Smart Auto-complete Headers -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="space-y-2">
                 <label class="block text-[10px] font-bold uppercase tracking-widest text-cyan-600 dark:text-cyan-400">Employer / Context</label>
@@ -110,6 +119,7 @@
           </div>
 
           <div class="space-y-8 py-6 border-y-2 border-gray-100 dark:border-gray-700">
+            <!-- Engagement -->
             <div class="space-y-3">
               <div class="flex justify-between items-end">
                 <label class="block text-xs font-bold uppercase tracking-widest">Engagement</label>
@@ -118,6 +128,7 @@
               <input type="range" id="engSlider" min="0" max="100" step="10" value="50" class="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full appearance-none cursor-pointer lever-cyan">
               <div class="flex justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400"><span>Bored</span><span>Immersed</span></div>
             </div>
+            <!-- Energy -->
             <div class="space-y-3">
               <div class="flex justify-between items-end">
                 <label class="block text-xs font-bold uppercase tracking-widest">Energy Battery</label>
@@ -153,23 +164,31 @@
       </div>
     </section>
 
+    <!-- VIEW 2: History Feed & Footer Container -->
     <section id="view-ledger" class="hidden w-full h-full overflow-y-auto custom-scrollbar flex flex-col">
-      <div class="p-6 flex-1">
-        <div class="max-w-5xl mx-auto">
-          <div class="flex items-center justify-between mb-8 mt-4">
-            <h2 class="text-xl font-extrabold uppercase tracking-widest">Activity Ledger</h2>
-            <span id="logCount" class="text-xs font-bold text-white dark:text-gray-900 bg-gray-900 dark:bg-gray-100 border-2 border-gray-900 dark:border-gray-100 px-4 py-2">0 logs</span>
-          </div>
-          <div id="historyFeed" class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-12">
+      <div class="min-h-full flex flex-col">
+        
+        <!-- Main Ledger Content -->
+        <div class="flex-grow p-6 pb-12">
+          <div class="max-w-5xl mx-auto">
+            <div class="flex items-center justify-between mb-8 mt-4">
+              <h2 class="text-xl font-extrabold uppercase tracking-widest">Activity Ledger</h2>
+              <span id="logCount" class="text-xs font-bold text-white dark:text-gray-900 bg-gray-900 dark:bg-gray-100 border-2 border-gray-900 dark:border-gray-100 px-4 py-2">0 logs</span>
             </div>
+            <div id="historyFeed" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <!-- Dynamically Injected -->
+            </div>
+          </div>
         </div>
+        
+        <!-- Footer Restricted to the very end of the scrollable content -->
+        <footer class="border-t-2 border-gray-900 dark:border-gray-700 bg-white dark:bg-gray-900 py-8 px-6 text-center mt-12">
+          <p class="text-xs text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-4xl mx-auto">
+            Open-Source Web Utility vibe coded with <strong>Gemini</strong>. Based entirely on the frameworks and concepts from the book <em>Designing Your Life</em>. <br class="hidden sm:block">All rights to the core methodology are reserved by authors Bill Burnett and Dave Evans.
+          </p>
+        </footer>
+
       </div>
-      
-      <footer class="mt-auto border-t-2 border-gray-900 dark:border-gray-700 bg-white dark:bg-gray-900 py-6 px-6 text-center">
-        <p class="text-xs text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-4xl mx-auto">
-          Open-Source Web Utility. Based entirely on the frameworks and concepts from the book <em>Designing Your Life</em>. <br class="hidden sm:block">All rights to the core methodology are reserved by authors Bill Burnett and Dave Evans.
-        </p>
-      </footer>
     </section>
 
   </main>
@@ -310,7 +329,6 @@
 
       ui.logCount.textContent = `${data.length} LOGS`;
       
-      // Auto-populate both Employer and Header dropdown datalists from unique past entries
       const uniqueEmployers = [...new Set(data.map(log => log.employer).filter(Boolean))];
       document.getElementById('employerList').innerHTML = uniqueEmployers.map(emp => `<option value="${emp}">`).join('');
 
