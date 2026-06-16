@@ -4,7 +4,9 @@ A privacy-first, open-source web application designed to help you track your dai
 
 This tool replaces the traditional pen-and-paper worksheet with a tactile, responsive, cross-platform web app that works flawlessly on your laptop and your phone.
 
-Vibe coded using Google Gemini.
+## 🤖 Vibe Coded with Gemini
+
+This entire project—from the local-first architecture and Google Apps Script database to the responsive Tailwind CSS interface—was "vibe coded" in collaboration with Google's Gemini. It serves as a live example of how AI can help rapidly prototype and launch fully functional, open-source software by simply describing the desired UX and aesthetic vibe.
 
 ## ✨ Features
 
@@ -35,20 +37,32 @@ Want to just try it out? You don't even need to download anything.
 Want to use the app on your Mac and your iPhone seamlessly? You can plug in your own private Google Sheet to act as your free cloud database.
 
 **Step 1: Set up the Database**
-1. Create a blank Google Sheet and name the first tab `JournalLogs`.
+1. Create a blank Google Sheet and name the first tab exactly `JournalLogs`.
 2. Add these exact headers to row 1 (A through J): `Date`, `Time`, `Day`, `Employer`, `Header`, `Desc`, `Engagement`, `Energy`, `Flow`, `Reflection`.
-3. Go to **Extensions -> Apps Script** and paste in the backend code (found in the `apps-script.js` file of this repo, or contact me for it).
-4. Click **Deploy -> New deployment -> Web app**. Set access to **"Anyone"**.
-5. Copy the resulting **Web App URL**.
+3. Go to **Extensions -> Apps Script** in the top menu.
+4. Delete the empty code, and paste in the backend code found in the `apps-script.js` file of this repository.
+5. Click the **Save** icon (floppy disk).
 
-**Step 2: Connect the App**
+**Step 2: Deploy and Authorize (Read Carefully)**
+1. In Apps Script, click the blue **Deploy** button (top right) -> **New deployment**.
+2. Click the gear icon next to "Select type" and choose **Web app**.
+3. Set *Execute as* to **Me** and *Who has access* to **Anyone**. Click **Deploy**.
+4. **The Security Warning:** Google will ask you to authorize access. This screen looks scary, but it's just Google confirming you wrote this code.
+   * Click **Authorize access**.
+   * Select your Google Account.
+   * You will see a warning: "Google hasn’t verified this app." Click the small **Advanced** text link at the bottom.
+   * Scroll down and click **Go to Untitled project (unsafe)**.
+   * Click **Allow**.
+5. Once authorized, a window will pop up with a URL under the phrase "Web app". Copy this **Web app URL** (it starts with `https://script.google.com/macros/...`).
+
+**Step 3: Connect the App**
 1. Open the Good Time Journal app on your phone or laptop.
 2. Click the **⚙️ Settings** icon in the top right.
-3. Paste your Web App URL into the **Live Google Sheets Sync** box and click **Connect**.
+3. Paste your Web app URL into the **Live Google Sheets Sync** box and click **Connect Database**.
 4. Repeat for any other devices. You are now syncing live!
 
 ## 📱 Make it a Native App
-* **iPhone:** Open the link in Safari, tap the Share icon, and select **Add to Home Screen**.
+* **iPhone:** Open the link in Safari, tap the Share icon at the bottom, and select **Add to Home Screen**.
 * **Mac:** Open the link in Safari, go to the top menu, and select **File -> Add to Dock...**
 
 ---
