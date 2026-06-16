@@ -29,7 +29,7 @@ You can use this app in two ways: **Offline** or **Cloud-Synced**.
 
 ### Method A: The Local Sandbox (Zero Setup)
 Want to just try it out? You don't even need to download anything.
-1. Visit the live site here: `[Insert your GitHub Pages URL here]`
+1. Visit the live site here: `(https://tdsmdh.github.io/good-time-journal/)`
 2. Start logging. Your data will save automatically to your current browser.
 3. Use the **Settings ⚙️** menu to export/import your data via a `.json` file if you want to manually move it to another device.
 
