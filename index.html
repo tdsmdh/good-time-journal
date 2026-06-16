@@ -87,107 +87,116 @@
     </div>
   </div>
 
-  <main class="flex-1 overflow-hidden bg-gray-50 dark:bg-gray-800 relative">
+  <main class="flex-1 relative bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
     
-    <!-- VIEW 1: Input Form -->
-    <section id="view-input" class="w-full h-full overflow-y-auto custom-scrollbar p-6 pb-12">
-      <div class="max-w-2xl mx-auto bg-white dark:bg-gray-900 p-6 md:p-10 border-2 border-gray-900 dark:border-gray-600 shadow-[8px_8px_0px_#111827] dark:shadow-[8px_8px_0px_#000000]">
-        <div id="statusBanner" class="hidden text-sm p-4 mb-6 text-center font-bold border-2 transition-all"></div>
+    <!-- VIEW 1: Input Form (Absolute Inset ensures perfect scrolling) -->
+    <section id="view-input" class="absolute inset-0 overflow-y-auto custom-scrollbar">
+      <div class="min-h-full flex flex-col">
+        <!-- Main Form Area -->
+        <div class="flex-1 p-6 pb-12 flex flex-col items-center">
+          <div class="w-full max-w-2xl bg-white dark:bg-gray-900 p-6 md:p-10 border-2 border-gray-900 dark:border-gray-600 shadow-[8px_8px_0px_#111827] dark:shadow-[8px_8px_0px_#000000] mt-4">
+            <div id="statusBanner" class="hidden text-sm p-4 mb-6 text-center font-bold border-2 transition-all"></div>
 
-        <form id="journalForm" class="space-y-8">
-          <div class="space-y-6">
-            
-            <!-- Smart Auto-complete Headers -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="space-y-2">
-                <label class="block text-[10px] font-bold uppercase tracking-widest text-cyan-600 dark:text-cyan-400">Employer / Context</label>
-                <input type="text" id="employerInput" list="employerList" required placeholder="Select past or type new..." class="w-full bg-cyan-50/50 dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-600 px-4 py-2.5 text-sm outline-none rounded-none placeholder-gray-400 dark:text-white focus:ring-4 focus:ring-cyan-200 transition-all">
-                <datalist id="employerList"></datalist>
-              </div>
-              <div class="space-y-2">
-                <label class="block text-[10px] font-bold uppercase tracking-widest text-pink-600 dark:text-pink-400">Activity Header</label>
-                <input type="text" id="activityHeaderInput" list="headerList" required placeholder="Select past or type new..." class="w-full bg-pink-50/50 dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-600 px-4 py-2.5 text-sm outline-none rounded-none placeholder-gray-400 dark:text-white focus:ring-4 focus:ring-pink-200 transition-all">
-                <datalist id="headerList"></datalist>
-              </div>
-            </div>
+            <form id="journalForm" class="space-y-8">
+              <div class="space-y-6">
+                
+                <!-- Smart Auto-complete Headers -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div class="space-y-2">
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-cyan-600 dark:text-cyan-400">Employer / Context</label>
+                    <input type="text" id="employerInput" list="employerList" required placeholder="Select past or type new..." class="w-full bg-cyan-50/50 dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-600 px-4 py-2.5 text-sm outline-none rounded-none placeholder-gray-400 dark:text-white focus:ring-4 focus:ring-cyan-200 transition-all">
+                    <datalist id="employerList"></datalist>
+                  </div>
+                  <div class="space-y-2">
+                    <label class="block text-[10px] font-bold uppercase tracking-widest text-pink-600 dark:text-pink-400">Activity Header</label>
+                    <input type="text" id="activityHeaderInput" list="headerList" required placeholder="Select past or type new..." class="w-full bg-pink-50/50 dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-600 px-4 py-2.5 text-sm outline-none rounded-none placeholder-gray-400 dark:text-white focus:ring-4 focus:ring-pink-200 transition-all">
+                    <datalist id="headerList"></datalist>
+                  </div>
+                </div>
 
-            <div class="space-y-2">
-              <label class="block text-xs font-bold uppercase tracking-widest">Activity Details</label>
-              <textarea id="activityDescInput" rows="3" required placeholder="What exactly were you doing? Be specific." class="w-full bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-600 px-4 py-3 text-sm outline-none resize-none rounded-none placeholder-gray-400 dark:text-white focus:ring-4 focus:ring-yellow-200 transition-all"></textarea>
-            </div>
-            
-          </div>
-
-          <div class="space-y-8 py-6 border-y-2 border-gray-100 dark:border-gray-700">
-            <!-- Engagement -->
-            <div class="space-y-3">
-              <div class="flex justify-between items-end">
-                <label class="block text-xs font-bold uppercase tracking-widest">Engagement</label>
-                <span id="engLabel" class="text-xs font-extrabold text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-900/30 px-3 py-1 border-2 border-cyan-200 dark:border-cyan-700/50">Neutral</span>
+                <div class="space-y-2">
+                  <label class="block text-xs font-bold uppercase tracking-widest">Activity Details</label>
+                  <textarea id="activityDescInput" rows="3" required placeholder="What exactly were you doing? Be specific." class="w-full bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-600 px-4 py-3 text-sm outline-none resize-none rounded-none placeholder-gray-400 dark:text-white focus:ring-4 focus:ring-yellow-200 transition-all"></textarea>
+                </div>
               </div>
-              <input type="range" id="engSlider" min="0" max="100" step="10" value="50" class="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full appearance-none cursor-pointer lever-cyan">
-              <div class="flex justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400"><span>Bored</span><span>Immersed</span></div>
-            </div>
-            <!-- Energy -->
-            <div class="space-y-3">
-              <div class="flex justify-between items-end">
-                <label class="block text-xs font-bold uppercase tracking-widest">Energy Battery</label>
-                <span id="enrLabel" class="text-xs font-extrabold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/30 px-3 py-1 border-2 border-pink-200 dark:border-pink-700/50">Neutral Balance</span>
-              </div>
-              <input type="range" id="enrSlider" min="-5" max="5" step="1" value="0" class="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full appearance-none cursor-pointer lever-magenta">
-              <div class="flex justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400"><span>Draining</span><span>Energizing</span></div>
-            </div>
-          </div>
 
-          <div>
-            <label class="relative flex items-center justify-between p-5 border-2 border-gray-900 dark:border-gray-600 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+              <div class="space-y-8 py-6 border-y-2 border-gray-100 dark:border-gray-700">
+                <!-- Engagement -->
+                <div class="space-y-3">
+                  <div class="flex justify-between items-end">
+                    <label class="block text-xs font-bold uppercase tracking-widest">Engagement</label>
+                    <span id="engLabel" class="text-xs font-extrabold text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-900/30 px-3 py-1 border-2 border-cyan-200 dark:border-cyan-700/50">Neutral</span>
+                  </div>
+                  <input type="range" id="engSlider" min="0" max="100" step="10" value="50" class="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full appearance-none cursor-pointer lever-cyan">
+                  <div class="flex justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400"><span>Bored</span><span>Immersed</span></div>
+                </div>
+                <!-- Energy -->
+                <div class="space-y-3">
+                  <div class="flex justify-between items-end">
+                    <label class="block text-xs font-bold uppercase tracking-widest">Energy Battery</label>
+                    <span id="enrLabel" class="text-xs font-extrabold text-pink-600 dark:text-pink-400 bg-pink-50 dark:bg-pink-900/30 px-3 py-1 border-2 border-pink-200 dark:border-pink-700/50">Neutral Balance</span>
+                  </div>
+                  <input type="range" id="enrSlider" min="-5" max="5" step="1" value="0" class="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full appearance-none cursor-pointer lever-magenta">
+                  <div class="flex justify-between text-[10px] font-bold uppercase tracking-wider text-gray-400"><span>Draining</span><span>Energizing</span></div>
+                </div>
+              </div>
+
               <div>
-                <span class="block text-sm font-extrabold uppercase tracking-widest">Achieved Flow State?</span>
-                <span class="block text-xs font-medium text-gray-500 mt-1">Lost all track of time.</span>
+                <label class="relative flex items-center justify-between p-5 border-2 border-gray-900 dark:border-gray-600 cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                  <div>
+                    <span class="block text-sm font-extrabold uppercase tracking-widest">Achieved Flow State?</span>
+                    <span class="block text-xs font-medium text-gray-500 mt-1">Lost all track of time.</span>
+                  </div>
+                  <input type="checkbox" id="flowInput" class="sr-only">
+                  <div id="flowBox" class="w-8 h-8 border-2 border-gray-900 dark:border-gray-500 flex items-center justify-center transition-colors bg-white dark:bg-gray-800">
+                    <svg id="flowCheck" class="w-5 h-5 text-gray-900 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="4"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                  </div>
+                </label>
               </div>
-              <input type="checkbox" id="flowInput" class="sr-only">
-              <div id="flowBox" class="w-8 h-8 border-2 border-gray-900 dark:border-gray-500 flex items-center justify-center transition-colors bg-white dark:bg-gray-800">
-                <svg id="flowCheck" class="w-5 h-5 text-gray-900 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="4"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+
+              <div class="space-y-2">
+                <label class="block text-xs font-bold uppercase tracking-widest">Reflection (AEIOU)</label>
+                <textarea id="reflectionInput" rows="3" placeholder="Why did this score this way? Note your environment, interactions, etc." class="w-full bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-600 px-4 py-3 text-sm outline-none resize-none rounded-none placeholder-gray-400 dark:text-white focus:ring-4 focus:ring-yellow-200 transition-all"></textarea>
               </div>
-            </label>
-          </div>
 
-          <div class="space-y-2">
-            <label class="block text-xs font-bold uppercase tracking-widest">Reflection (AEIOU)</label>
-            <textarea id="reflectionInput" rows="3" placeholder="Why did this score this way? Note your environment, interactions, etc." class="w-full bg-white dark:bg-gray-800 border-2 border-gray-900 dark:border-gray-600 px-4 py-3 text-sm outline-none resize-none rounded-none placeholder-gray-400 dark:text-white focus:ring-4 focus:ring-yellow-200 transition-all"></textarea>
+              <button type="submit" id="submitBtn" class="w-full bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 font-extrabold uppercase tracking-widest py-5 border-2 border-gray-900 dark:border-gray-100 transition-all hover:bg-black active:scale-[0.98] flex justify-center items-center gap-3">
+                <span>Log Activity</span><span class="w-2 h-2 rounded-full bg-yellow-400 dark:bg-yellow-500"></span>
+              </button>
+            </form>
           </div>
+        </div>
 
-          <button type="submit" id="submitBtn" class="w-full bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 font-extrabold uppercase tracking-widest py-5 border-2 border-gray-900 dark:border-gray-100 transition-all hover:bg-black active:scale-[0.98] flex justify-center items-center gap-3">
-            <span>Log Activity</span><span class="w-2 h-2 rounded-full bg-yellow-400 dark:bg-yellow-500"></span>
-          </button>
-        </form>
+        <!-- Scrollable Footer (Input View) -->
+        <footer class="w-full shrink-0 border-t-2 border-gray-900 dark:border-gray-700 bg-white dark:bg-gray-900 py-6 px-6 text-center transition-colors duration-300">
+          <p class="text-xs text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-4xl mx-auto">
+            Open-Source Web Utility vibe coded with <strong>Gemini</strong>. Based entirely on the frameworks and concepts from the book <em>Designing Your Life</em>. <br class="hidden sm:block">All rights to the core methodology are reserved by authors Bill Burnett and Dave Evans.
+          </p>
+        </footer>
       </div>
     </section>
 
-    <!-- VIEW 2: History Feed & Footer Container -->
-    <section id="view-ledger" class="hidden w-full h-full overflow-y-auto custom-scrollbar flex flex-col">
+    <!-- VIEW 2: History Feed -->
+    <section id="view-ledger" class="hidden absolute inset-0 overflow-y-auto custom-scrollbar">
       <div class="min-h-full flex flex-col">
-        
-        <!-- Main Ledger Content -->
-        <div class="flex-grow p-6 pb-12">
+        <!-- Main Ledger Area -->
+        <div class="flex-1 p-6 lg:p-10">
           <div class="max-w-5xl mx-auto">
             <div class="flex items-center justify-between mb-8 mt-4">
               <h2 class="text-xl font-extrabold uppercase tracking-widest">Activity Ledger</h2>
               <span id="logCount" class="text-xs font-bold text-white dark:text-gray-900 bg-gray-900 dark:bg-gray-100 border-2 border-gray-900 dark:border-gray-100 px-4 py-2">0 logs</span>
             </div>
-            <div id="historyFeed" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div id="historyFeed" class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-12">
               <!-- Dynamically Injected -->
             </div>
           </div>
         </div>
         
-        <!-- Footer Restricted to the very end of the scrollable content -->
-        <footer class="border-t-2 border-gray-900 dark:border-gray-700 bg-white dark:bg-gray-900 py-8 px-6 text-center mt-12">
+        <!-- Scrollable Footer (Ledger View) -->
+        <footer class="w-full shrink-0 border-t-2 border-gray-900 dark:border-gray-700 bg-white dark:bg-gray-900 py-6 px-6 text-center transition-colors duration-300 mt-auto">
           <p class="text-xs text-gray-500 dark:text-gray-400 font-medium leading-relaxed max-w-4xl mx-auto">
             Open-Source Web Utility vibe coded with <strong>Gemini</strong>. Based entirely on the frameworks and concepts from the book <em>Designing Your Life</em>. <br class="hidden sm:block">All rights to the core methodology are reserved by authors Bill Burnett and Dave Evans.
           </p>
         </footer>
-
       </div>
     </section>
 
